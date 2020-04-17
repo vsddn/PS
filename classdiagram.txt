@@ -1,0 +1,9 @@
+The diagram is about Orders
+The diagram shows 2 kinds of Orders:
+	1. Special
+	2. Normal
+There is one more class named Customer that has attributes name and location and methods named sendOrder and receiveOrder which are used to make a request of order and reception of the order.
+
+Order class has functions to confirm the order and closing of the order.
+
+SpecialOrder and NormalOrder classes have functions that are used to show the confirmation of the order, distpatching the order, accept the order and close the ordering process. 

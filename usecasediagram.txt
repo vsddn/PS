@@ -1,0 +1,3 @@
+The actor makes an order.
+The order is checked for Special and Normal order.
+Special and Normal order are having an extends relationship with the order, that means those are not neccessarily used with every order.

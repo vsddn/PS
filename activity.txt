@@ -1,0 +1,7 @@
+Process starts.
+Customer sends order request.
+Order is confirmed.
+Order is then checked if its a special order or normal order.
+If the order is normal then the order is confirmed and after that it is dispatched.
+If the order is not normal then it is checked if it is a special order. 
+If yes then the special order is dispatched otherwise the process is terminated.

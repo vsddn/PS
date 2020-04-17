@@ -1,0 +1,7 @@
+Explaination:
+
+1. The cutomer is called.
+2. Customer sends a message asking for the order using sendOrder method.
+3. Then order is checked if its a special order or a normal one.
+4. Then that information is passed to Order making unit.
+5. Order making unit returns with the correct reponse.

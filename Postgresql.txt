@@ -1,0 +1,22 @@
+  
+\l;
+
+CREATE DATABASE PJPpractice;
+
+\l;
+
+\c PJPpractice;
+
+\d;
+
+CREATE TABLE TEST (id integer,fname character(30));
+
+ALTER TABLE test ADD COLUMN lamne character(30);
+
+ALTER TABLE test RENAME COLUMN lamne to last_name;
+
+ALTER TABLE test ADD CONSTRAINT PRIME PRIMARY KEY(ID);
+
+ALTER TABLE test DROP last_name;
+
+ALTER TABLE test RENAME TO test1;

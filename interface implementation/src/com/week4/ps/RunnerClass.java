@@ -9,7 +9,8 @@ interface Num_Process{
 public class RunnerClass {
 
 	public static void main(String []args) {
-		Num_Process operation[] = new Num_Process[4];
+		public static void main(String []args) {
+		Num_Process obj[] = new Num_Process[4];
 		System.out.println("Enter two numbers: ");
 		Scanner sc = new Scanner(System.in);
 		int x = sc.nextInt();
@@ -21,22 +22,12 @@ public class RunnerClass {
 		System.out.println("4. Division");
 		int choice = sc.nextInt();
 		sc.close();
-			operation[0] = (a,b)->{
-			return a+b;
-				};
-				
-		operation[1] = (a,b)->{
-			return a-b;
-				};	
-		operation[2] = (a,b)->{
-			return a*b;
-				};		
-		operation[3] = (a,b)->{
-			return a/b;
-				};
+		obj[0] = (a,b)->(a+b);		
+		obj[1] = (a,b)->(a-b);	
+		obj[2] = (a,b)->(a*b);		
+		obj[3] = (a,b)->(a/b);
 		
-		System.out.println(operation[choice-1].cal(x, y));
-		
+		System.out.println(obj[choice-1].cal(x, y));	
 	}
 
 }

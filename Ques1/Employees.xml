@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Employees>
+	<Employee id="1">
+		<name>David</name>
+		<city>Mosco</city>
+	</Employee>
+	<Employee id="2">
+		<name>Parker</name>
+		<city>NY</city>
+	</Employee>
+	<Employee id="3">
+		<name>Pankaj</name>
+		<city>India</city>
+	</Employee>
+	<Employee id="4">
+		<name>Amit</name>
+		<city>India</city>
+	</Employee>
+	
+</Employees>

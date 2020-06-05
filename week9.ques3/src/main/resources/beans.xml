@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+ <bean id="stu" class="com.ques3.jsp.Student">
+    <property name="mp">
+      <map>
+        <entry key="id" value="50"/>
+        <entry key="maths" value="90"/>
+        <entry key="science" value="80"/>
+        <entry key="english" value="84"/>
+        <entry key="hindi" value="85"/>
+      </map>
+    </property>
+  </bean>
+  </beans>

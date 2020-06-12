@@ -1,9 +1,9 @@
 package com.sapient.week10;
 
 public class Employee {
-	int id;
-	String name;
-	String city;
+	private int id;
+	private String name;
+	private String city;
 	
 	public Employee() {
 		super();

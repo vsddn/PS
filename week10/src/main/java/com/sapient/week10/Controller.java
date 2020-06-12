@@ -14,38 +14,38 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Controller {
 	@Autowired
-	EmployeeBO e;
+	EmployeeBO emp;
 	
 	@GetMapping("/employees")
 	public List<Employee> showEmployees() {
-		return e.showEmployees();
+		return emp.showEmployees();
 	}	
-	
-	@PutMapping("update/{id}")
-	public Employee updateEmployee(@PathVariable int id) {
-		return  e.updateEmployee(id);
-		
-	}
 	
 	@GetMapping("/employeeId/{id}")
 	public Employee showEmployeeById(@PathVariable int id) {
-		return e.showEmployeeWithId(id);
+		return emp.showEmployeeWithId(id);
 	}
 	
-	@PostMapping("/add")
-	public Employee addEmployee(@RequestBody Employee emp) {
-		e.addEmployee(emp);
-		return emp;
-	}
-
 	@GetMapping("/employeeName/{name}")
 	public Employee showEmployeeByName(@PathVariable String name) {
-		return e.showEmployeeWithName(name);
+		return emp.showEmployeeWithName(name);
 	}
 	
-	@DeleteMapping("/delete/{id}")
-	public void deleteEmployee(@PathVariable int id) {
-		e.deleteEmployee(id);
+	@PostMapping(value="/add")
+	public EmployeeBO addEmployee() {
+		emp.addEmployee(10,"Veronica","Reeva");
+		return emp;
+	}
+	
+	@DeleteMapping(value="/delete/{id}" )
+	public String deleteEmployee(@PathVariable int id) {
+		return emp.deleteEmployee(id);
 	}
 
+	
+	@PutMapping("/update/{id}")
+	public Employee updateEmployee(@PathVariable int id) {
+		return  emp.updateEmployee(id);
+		
+	}
 }

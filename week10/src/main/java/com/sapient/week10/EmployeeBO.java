@@ -10,66 +10,67 @@ import org.springframework.stereotype.Component;
 @Component
 public class EmployeeBO {
 	
-		static List<Employee> list = new ArrayList<Employee>();
+		static List<Employee> employeeList = new ArrayList<Employee>();
 		static {
-			list.add(new Employee(1,"David","New York"));
-			list.add(new Employee(2,"Anya","Mexico"));
-			list.add(new Employee(3,"Amit","London"));
-			list.add(new Employee(4,"Ravi","India"));
+			employeeList.add(new Employee(1,"David","New York"));
+			employeeList.add(new Employee(2,"Anya","Mexico"));
+			employeeList.add(new Employee(3,"Amit","London"));
+			employeeList.add(new Employee(4,"Ravi","India"));
 		}
 		
 		public void addEmployee(Employee e) {
-			list.add(e);
+			employeeList.add(e);
 		}
 		
 		public int addEmployee(int id, String name, String city)
 		{
-			list.add(new Employee(id,name,city));
+			employeeList.add(new Employee(id,name,city));
 			return id;
 		}
 		
 		public Employee updateEmployee(int id) {
-			for(Employee e:list)
+			for(Employee e:employeeList)
 			{
 				if(e.getId()==id)
 				{
-					e.setName("New Name");
-					e.setCity("New City");
+					e.setName("Cristiano");
+					e.setCity("Portugal");
 					return e;
-					
 				}
 			}
 			return null;
 		}
 		
-
-		public void deleteEmployee(int id) {
-			Iterator<Employee> i = list.iterator();
-			while(i.hasNext()) 
+		public String deleteEmployee(int id) {
+			Iterator<Employee> itr = employeeList.iterator();
+			while(itr.hasNext()) 
 			{
-				if(i.next().id ==id)
-				{
-					i.remove();
+				Employee obj = itr.next();
+				if(obj.getId() ==id)
+				{  
+					itr.remove();
+					return "Deletion Successful";
 				}
 			}
+			return "Deletion Failed";
 		}
 		
 		public Employee showEmployeeWithId(int id) {
-			for(Employee e: list)
+			for(Employee emp: employeeList)
 			{
-				if(e.id==id)
-					return e;
+				if(emp.getId()==id)
+					return emp;
 			}
 			return null;
 		}
 		
 		
 		public List<Employee> showEmployees(){
-			return list;
+			return employeeList;
 		}
 
 		public Employee showEmployeeWithName(String name) {
-			for(Employee obj:list) 
+			for(Employee obj:employeeList) 
 			{
 				if(obj.getName().equals(name))
 				{

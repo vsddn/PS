@@ -30,8 +30,8 @@ git commit -m "Folder Deleted"
 git push origin feature
 
 // Checking out branches
-git checkout feature
-git pull origin feature
+git checkout Feature
+git pull origin Feature
 
 // Command to merge the branches
 git checkout master

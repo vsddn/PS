@@ -1,0 +1,41 @@
+// Made a branch PJP2_week1 which has all the commands in text file
+
+git init
+
+git add -A
+git commit -m "Commands Added"
+git remote add origin https://github.com/vsddn/PS.git
+git push -u origin PJP2_week1
+
+// Commands used for the assignment
+git checkout -b Feature
+git checkout -b Dev
+git checkkout -b QA
+git checkout -b Delivery
+
+// Make the file in the given directory (file.txt in feature directory)
+git status
+git add -A
+git commit -m "Adding File"
+git push origin Feature
+
+// command to remove the file
+git rm --cached file.txt
+git rm -f file.txt
+git push origin master
+
+// Removing the directory made in Feature Branch
+git rm -r feature 
+git commit -m "Folder Deleted"
+git push origin feature
+
+// Checking out branches
+git checkout feature
+git pull origin feature
+
+// Command to merge the branches
+git checkout master
+git merge Feature
+git merge Dev
+git merge QA
+git merge Delivery

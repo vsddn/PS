@@ -45,15 +45,20 @@ public class DateTimeCalculator {
 	
 	// Add days to a date
 	public void addNDays(Date date,int choice) {
-		calendar.setTime(date);
 		System.out.println("Enter the number of days you want to add: ");
 		int days = sc.nextInt();
-		calendar.add(Calendar.DATE, days);
-		String result = getDate(calendar);
-        System.out.println("Date after adding "+days+" days : " + result);
-        calculatorHistory.addHistory(new History(date,days,choice,result));
+		String result = getAdditionOfNDays(date,days);
+		System.out.println("Date after adding "+days+" days : " + result);
+		calculatorHistory.addHistory(new History(date,days,choice,result));
 		}
 		
+	public String getAdditionOfNDays(Date date,int days) {
+		calendar.setTime(date);
+		calendar.add(Calendar.DATE, days);
+		String result = getDate(calendar);
+        return result;
+	}
+	
 	// Subtract days from date
 	public void subtractNDays(Date date,int choice) {
 		calendar.setTime(date);
@@ -110,19 +115,25 @@ public class DateTimeCalculator {
 	}
 	
 	// Get day of the date
-	public void getDayOfTheDate(Date date,int choice) {
+	public String getDayOfTheDate(Date date,int choice) {
 		calendar.setTime(date);
 		String result = weekDays[calendar.get(Calendar.DAY_OF_WEEK)-1];
 		System.out.println("The day of the week is: "+result);
 		calculatorHistory.addHistory(new History(date,choice,result));
+		return result;
 	}
 	
 	// Get week of the date
 	public void getWeekOfTheDate(Date date,int choice) {
-		calendar.setTime(date);
-		int result = calendar.get(Calendar.WEEK_OF_YEAR);
+		int result = getWeek(date);
 		System.out.println("Week number is: "+result);
 		calculatorHistory.addHistory(new History(date,choice,result));
+	}
+	
+	public int getWeek(Date date) {
+		calendar.setTime(date);
+		int result = calendar.get(Calendar.WEEK_OF_YEAR);
+		return result;
 	}
 	
 	private String getDate(Calendar cal){

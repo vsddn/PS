@@ -1,0 +1,26 @@
+pipeline { 
+    agent any  
+    stages { 
+        stage('Build') { 
+            steps { 
+               echo 'Maven Test, Compiling and Packaging with Jenkins.' 
+			   sh 'mvn validate'
+            }
+        }
+        stage('Compile') { 
+            steps { 
+               sh 'mvn compile'
+            }
+		}
+		stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }		
+		stage('Install') {
+            steps {
+                sh 'mvn install'
+            }
+        }
+    }
+}

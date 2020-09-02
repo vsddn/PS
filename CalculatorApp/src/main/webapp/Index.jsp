@@ -113,11 +113,7 @@ function callCalculator(){
 	 		document.getElementById("form").action = '/addNMontbs';
 	 	 else if(selectedValue==='8')
 	 		document.getElementById("form").action = '/subtractNMonths';
-	 	 else if(selectedValue==='9')
-	 		document.getElementById("form").action = '/addNYears';
-	 	 else if(selectedValue==='10')
-	 		document.getElementById("form").action = '/subtractNYears';
-
+	 	 
 }
 
 </script>

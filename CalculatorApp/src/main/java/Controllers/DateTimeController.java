@@ -37,7 +37,7 @@ public class DateTimeController {
 	@GetMapping("/")
 	public String homePage() {
 		session_id = sessionRepository.findSessionId()+1;
-		return "hello user";
+		return "index.jsp";
 	} 
 	
 	@GetMapping("/addDates")
@@ -133,7 +133,7 @@ public class DateTimeController {
 	}
 	
 	private String getDate(Date date) {
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");  
 		String strDate = dateFormat.format(date);  
 		return strDate;
 	}

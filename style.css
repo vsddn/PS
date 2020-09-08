@@ -1,0 +1,51 @@
+
+#date1{
+ /* display: none; */
+ margin-left:10px;
+ margin-bottom: 10px;
+}
+
+#date2{
+/* display: none; */
+margin-left:10px;
+margin-bottom: 10px;
+}
+
+.submitbtn{
+ /* display: none; */
+ margin-left:10px;
+ margin-bottom: 10px;
+}
+
+#txtbox{
+ /* display: none; */
+ margin-left:10px;
+ margin-bottom: 10px;
+}
+
+
+.inp{
+margin-top: 5px;
+}
+
+.header {
+  padding: 10px;
+  text-align: center;
+  background: #429ce6;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.menu input {
+  width: 300px;
+  margin: 10px;
+}
+
+.wrapper {
+  margin: 0 auto;
+}
+
+.btns button{
+  width: 125px;
+}
+

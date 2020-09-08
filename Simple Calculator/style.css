@@ -45,7 +45,17 @@ margin-top: 5px;
   margin: 0 auto;
 }
 
-.btns button{
+.btns input{
   width: 125px;
 }
 
+.op select{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    width: 178px;
+}
+
+.op label{
+    margin-left: 10px;
+    margin-bottom: 5px;
+}

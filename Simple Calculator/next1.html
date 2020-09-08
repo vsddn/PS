@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <form  name="next1Form"  method="get" id="next1Form"> 
+
+        <div id="date1">
+            <div class="inp">
+                <label>First Date</label>
+            </div>
+            <input type="text" id="date1Value" placeholder="yyyy-mm-dd" />
+        </div>
+        
+        <div id="date2">
+            <div class="inp">
+                <label>Second Date</label>
+            </div>
+            <input type="text" id="date2Value" placeholder="yyyy-mm-dd" />
+        </div>
+
+        <div class="op">
+            <div>
+                <label>Choose an option: </label>
+            </div>
+
+            <select id="options" >
+                <option>Add Dates</option>
+                <option>Subtract Dates</option>
+            </select>
+        </div>
+
+        <div class="btns">
+            <input id = "submitbutton" onclick="results(this.form)"  value="Show Result" type="button"  class="submitbtn btn btn-primary btn-md" />
+        </div>
+    </form>
+
+    <script type="text/javascript">
+        function results(form)
+        {
+            let result;
+            let option = form.options.value;
+            let temp = form.date1Value.value.split("-");
+            let date1 = new Date(temp[0],temp[1] - 1,temp[2]);
+            temp = form.date2Value.value.split("-");
+            let date2 = new Date(temp[0],temp[1] - 1,temp[2]);
+
+            switch(option){
+                case "Add Dates":
+                    result = addDates(date1,date2);
+                    break;
+                case "Subtract Dates":
+                    result = subtractDates(date1,date2);
+                    break;
+            }
+            document.write("Result: "+result);
+        }
+
+        function addDates(date1,date2) {
+            let date1Millis = date1.getTime();
+            let date2Millis =  date2.getTime();
+
+            var newDate = new Date();
+            newDate.setTime(date1Millis + date2Millis);
+
+            return newDate;
+        }
+
+        function subtractDates(date1,date2) {
+            let diffTime = Math.abs(date2 - date1);
+            let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            let years = Math.floor(diffDays / 365);
+            let remainingDays = diffDays % 365;
+
+            let months = Math.floor(remainingDays / 30.5);
+            let days = Math.floor(remainingDays % 30.5);
+            let diffInFormat = "";
+            diffInFormat = years + " years,"+ months + " months," + days + " days" ;
+            return diffInFormat;
+        }
+
+    </script>
+
+</body>
+</html>
+
+
+

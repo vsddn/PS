@@ -1,0 +1,22 @@
+# Choose the Image which has Node installed already
+FROM node:12
+
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package*.json ./
+
+# Install the Project Dependencies like Express Framework
+RUN npm install
+
+# Bundle app source
+COPY . .
+
+# Tell that this image is going to Open a Port 
+EXPOSE 8080
+
+# Default Command to launch the Application
+CMD ["node" , "app.js"]
+
+
+#docker run -p 8080:3000 -t docker-test

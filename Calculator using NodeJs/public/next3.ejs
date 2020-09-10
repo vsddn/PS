@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+<form  name="next3Form"  method="get" id="next3Form">
+
+    <div id="date1">
+        <div class="inp">
+            <label>Date</label>
+        </div>
+        <input type="text" id="dateValue" placeholder="yyyy-mm-dd"/>
+    </div>
+
+    <div class="op">
+        <div>
+            <label>Choose an option</label>
+        </div>
+        <select id="options" >
+            <option>Tomorrow</option>
+            <option>Yesterday</option>
+            <option>Day-after tomorrow</option>
+            <option>Day-before yesterday</option>
+            <option>Day of the week</option>
+            <option>Week of the year</option>
+        </select>
+    </div>
+
+    <div class="btns">
+        <input id = "submitbutton" onclick="results(this.form)"  value="Show Result" type="button"  class="submitbtn btn btn-primary btn-md" />
+    </div>
+
+</form>
+
+
+<script>
+    function results(form)
+    {
+        var result;
+
+        var option = form.options.value;
+        var temp = form.dateValue.value.split("-");
+        var date1 = new Date(temp[0],temp[1] - 1,temp[2]);
+
+        var date = new Date(date1);
+
+        switch(option){
+            case "Tomorrow":
+                result = tomorrow(date);
+                break;
+            case "Yesterday":
+                result = yesterday(date);
+                break;
+            case "Day-after tomorrow":
+                result = dayAfterTomorrow(date);
+                break;
+            case "Day-before yesterday":
+                result = dayBeforeYesterday(date);
+                break;
+
+            case "Day of the week":
+                result = getDayOfTheWeek(date1);
+                break;
+            case "Week of the year":
+                result = getWeekOfTheYear(date);
+                break;
+        }
+
+        document.write("Result: "+result);
+    }
+
+    function tomorrow(date)
+    {
+        var result = new Date(date);
+        result.setDate(result.getDate() + 1);
+        return result;
+    }
+
+    function yesterday(date)
+    {
+        var result = new Date(date);
+        result.setDate(result.getDate() - 1);
+        return result;
+    }
+
+
+    function dayAfterTomorrow(date)
+    {
+        var result = new Date(date);
+        result.setDate(result.getDate() + 2);
+        return result;
+    }
+
+    function dayBeforeYesterday(date)
+    {
+        var result = new Date(date);
+        result.setDate(result.getDate() - 2);
+        return result;
+    }
+
+    function getDayOfTheWeek(date)
+    {
+        var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+        return days[date.getDay()];
+    }
+
+    function getWeekOfTheYear(date)
+    {
+        let diffTime = Math.abs(date);
+        let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        let years = Math.floor(diffDays / 365);
+        let remainingDays = diffDays % 365;
+        return Math.floor(remainingDays/7);
+    }
+
+</script>
+
+</body>
+</html>
+
+
+

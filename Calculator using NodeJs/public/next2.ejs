@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+    <form  name="next2Form"  method="get" id="next2Form">
+        <div id="date1">
+            <div class="inp">
+                <label>Date</label>
+            </div>
+            <input type="text" id="dateValue" placeholder="yyyy-mm-dd" />
+        </div>
+
+        <div id="txtbox">
+            <div class="inp">
+                <label>Value Of N</label>
+            </div>
+                <input type="text" id="n" placeholder="Value of N" />
+        </div>
+
+        <div class="op">
+            <div>
+                <label>Choose an option: </label>
+            </div>
+
+            <select id="options" >
+                <option>Add days</option>
+                <option>Subtract Days</option>
+                <option>Add weeks</option>
+                <option>Subtract weeks</option>
+                <option>Add months</option>
+                <option>Subtract months</option>
+            </select>
+        </div>
+
+        <div class="btns">
+            <input id = "submitbutton" onclick="results(this.form)"  value="Show Result" type="button"  class="submitbtn btn btn-primary btn-md" />
+        </div>
+
+    </form>
+
+    <script type="text/javascript">
+        function results(form)
+        {
+            let result;
+
+            let option = form.options.value;
+            let n = form.n.value;
+            let temp = form.dateValue.value.split("-");
+            let date1 = new Date(temp[0],temp[1] - 1,temp[2]);
+
+            let date = new Date(date1);
+            console.log(option);
+
+            switch(option){
+                case "Add days":
+                    result = addDays(date,n);
+                    break;
+                case "Subtract days":
+                    result = subtractDays(date,n);
+                    break;
+                case "Add weeks":
+                    result = addWeeks(date,n);
+                    break;
+                case "Subtract weeks":
+                    result = subtractWeeks(date,n);
+                    break;
+                case "Add months":
+                    result = addMonths(date1,n);
+                    break;
+                case "Subtract months":
+                    result = subtractMonths(date,n);
+                    break;
+            }
+
+            document.write("Result: "+result);
+        }
+
+        function addDays(date,days) {
+            result = new Date(date);
+            result.setDate(result.getDate() + days);
+            console.log(result);
+            return result;
+        }
+
+        function subtractDays(date,days) {
+            result = new Date(date);
+            result.setDate(result.getDate() - days);
+            document.write("Result is: "+result);
+        }
+
+        function addWeeks(date,weeks) {
+            result = new Date(date);
+            result.setDate(result.getDate() + 7*weeks);
+            return result;
+        }
+
+        function subtractWeeks() {
+            result = new Date(date);
+            result.setDate(result.getDate() - 7*weeks);
+            return result;
+        }
+
+        function addMonths() {
+            result = new Date(date);
+            let days = Math.floor(months * 30.5);
+            result.setDate(result.getDate() + days);
+            return result;
+        }
+
+        function subtractMonths() {
+            result = new Date(date);
+            let days = Math.floor(months * 30.5);
+            result.setDate(result.getDate() - days);
+            return result;
+        }
+
+    </script>
+
+</body>
+</html>

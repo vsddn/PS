@@ -39,9 +39,8 @@ public class Calculator {
 			}
 
 			if (temp != null) {
+				transaction.setProcessingFees(transaction.getProcessingFees()+transactionFees.getFees(temp.getTransactionType()));
 				transactions.remove(temp);
-				temp.setProcessingFees(temp.getProcessingFees()+transactionFees.getFees(temp.getTransactionType()));
-				transactions.add(temp);
 			}
 
 		} else {

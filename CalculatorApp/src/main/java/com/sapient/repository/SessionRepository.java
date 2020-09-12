@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-import com.sapient.date_time_calculator.Session;
+import com.sapient.model.Session;
 
 
 @Repository

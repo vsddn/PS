@@ -1,115 +1,131 @@
 package com.sapient.CalculatorApp;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
-import com.sapient.date_time_calculator.DateTimeCalculator;
-import com.sapient.date_time_calculator.DatesManager;
-import com.sapient.date_time_calculator.Session;
+import com.sapient.model.DateTimeCalculator;
+import com.sapient.model.DatesManager;
+import com.sapient.model.Session;
 import com.sapient.repository.SessionRepository;
 
-@RestController
-@RequestMapping("/api")
+@Controller
 public class DateTimeRestController {
 	@Autowired
-	DateTimeCalculator dateTimeCalculator;
+	DateTimeCalculator datetTimeCalculator;
 	@Autowired
 	SessionRepository sessionRepository;
+	@Autowired
+	DatesManager datesManager;
 
+	
 	Long session_id =(long) 1;
 	
 	List<Long> allSession;
 	
 	private String result;
 	private String query;
+	private String date;
 	
 	@GetMapping("/")
 	public String homePage() {
 		session_id = sessionRepository.findSessionId()+1;
-		return "hello user";
+		return "Hello there";
 	} 
 	
 	@GetMapping("/addDates")
 	public String addDates(@RequestParam Date date1,@RequestParam Date date2,int choice) {
-		result = dateTimeCalculator.addTwoDates(date1, date2,choice);
-		sessionRepository.save(new Session(session_id,date1,result.getFormattedDate()));
+		result = datetTimeCalculator.addTwoDates(date1, date2,choice);
+		 date= getDate(date1);
+		sessionRepository.save(new Session(session_id,date,result));
 		return result;
 	}
 	
 	@GetMapping("/subtractDates")
 	public String subtractDates(@RequestParam Date date1,@RequestParam Date date2,int choice,ModelMap model) {
-		result = dateTimeCalculator.subtractTwoDates(date1,date2,choice);
-		sessionRepository.save(new Session(session_id,date1,result.getFormattedDate()));
+		result = datetTimeCalculator.subtractTwoDates(date1,date2,choice);
+		 date= getDate(date1);
+		sessionRepository.save(new Session(session_id,date,result));
 		
 		return result;
 	}
 	@GetMapping("/addNDays")
 	public String addNDays(@RequestParam Date date1, @RequestParam int choice, @RequestParam int n, ModelMap model) {
-		result = dateTimeCalculator.addNDays(date1,choice,n);
-		sessionRepository.save(new Session(session_id,date1,result.getFormattedDate()));
+		result = datetTimeCalculator.addNDays(date1,choice,n);
+		 date= getDate(date1);
+		sessionRepository.save(new Session(session_id,date,result));
 		return result;
 	}
 	
 	
 	@GetMapping("/subtractNDays")
 	public String subtractNDays(@RequestParam Date date1,@RequestParam int choice, @RequestParam int n, ModelMap model) {
-		result = dateTimeCalculator.subtractNDays(date1,choice,n);
-		
-		sessionRepository.save(new Session(session_id,date1,result.getFormattedDate()));
+		result = datetTimeCalculator.subtractNDays(date1,choice,n);
+		String date= getDate(date1);
+		sessionRepository.save(new Session(session_id,date,result));
 		
 		return result;
 	}
 	
 	@GetMapping("/addNWeeks")
 	public String addNWeeks(@RequestParam Date date1,@RequestParam int choice, @RequestParam int n, ModelMap model) {
-		result = dateTimeCalculator.addNWeeks(date1,choice,n);
+		result = datetTimeCalculator.addNWeeks(date1,choice,n);
 		query = "Add "+n+" Weeks to "+date1;
 		model.put("query", query);
 		model.put("result", result);
-		sessionRepository.save(new Session(session_id,date1,result.getFormattedDate()));
-		return "result.jsp";
+		date= getDate(date1);
+		sessionRepository.save(new Session(session_id,date,result));
+		return result;
 	}
 	
 	@GetMapping("/subtractNWeeks")
 	public String subtractNWeeks(@RequestParam Date date1,@RequestParam int choice, @RequestParam int n, ModelMap model) {
-		result = dateTimeCalculator.subtractNWeeks(date1,choice,n);
+		result = datetTimeCalculator.subtractNWeeks(date1,choice,n);
 		query = "Subtract "+n+" weeks to "+date1;
 		model.put("query", query);
 		model.put("result", result);
-		sessionRepository.save(new Session(session_id,date1,result.getFormattedDate()));
-		return "result.jsp";
+		date= getDate(date1);
+		sessionRepository.save(new Session(session_id,date,result));
+		return result;
 	}
 	
 	@GetMapping("/addNMonths")
 	public String addNMonths(@RequestParam Date date1,@RequestParam int choice, @RequestParam int n, ModelMap model) {
-		result = dateTimeCalculator.addNMonths(date1,choice,n);
-		sessionRepository.save(new Session(session_id,date1,result.getFormattedDate()));
+		result = datetTimeCalculator.addNMonths(date1,choice,n);
+		date= getDate(date1);
+		sessionRepository.save(new Session(session_id,date,result));
 		return result;
 	}
 	
 	@GetMapping("/subtractNMonths")
 	public String subtractNMonths(@RequestParam Date date1,@RequestParam int choice, @RequestParam int n, ModelMap model) {
-		result = dateTimeCalculator.subtractNMonths(date1,choice,n);
-		sessionRepository.save(new Session(session_id,date1,result.getFormattedDate()));
+		result = datetTimeCalculator.subtractNMonths(date1,choice,n);
+		date= getDate(date1);
+		sessionRepository.save(new Session(session_id,date,result));
 		return result;
 	}
 	
 	@GetMapping("/getDay")
 	public String getDayOfTheWeek(@RequestParam Date date,@RequestParam int choice,ModelMap model) {
-		result = dateTimeCalculator.getDayOfTheDate(date, choice);
+		result = datetTimeCalculator.getDayOfTheDate(date, choice);
 		return result;
 	}
 	
 	@GetMapping("/getWeek")
 	public String getWeek(@RequestParam Date date,@RequestParam int choice,ModelMap model) {
-		result = dateTimeCalculator.getDayOfTheDate(date, choice);
+		result = datetTimeCalculator.getDayOfTheDate(date, choice);
 		return result;
 	}
 	
@@ -120,4 +136,12 @@ public class DateTimeRestController {
 		return  session;
 		
 	}
+	
+	private String getDate(Date date) {
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");  
+		String strDate = dateFormat.format(date);  
+		return strDate;
+	}
+	
 }
+

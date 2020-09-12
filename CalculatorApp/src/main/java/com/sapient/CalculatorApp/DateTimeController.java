@@ -16,9 +16,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.sapient.date_time_calculator.DateTimeCalculator;
-import com.sapient.date_time_calculator.DatesManager;
-import com.sapient.date_time_calculator.Session;
+import com.sapient.model.DateTimeCalculator;
+import com.sapient.model.DatesManager;
+import com.sapient.model.Session;
 import com.sapient.repository.SessionRepository;
 
 @Controller

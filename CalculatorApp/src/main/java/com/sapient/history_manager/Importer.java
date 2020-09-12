@@ -1,4 +1,4 @@
-package history_manager;
+package com.sapient.history_manager;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

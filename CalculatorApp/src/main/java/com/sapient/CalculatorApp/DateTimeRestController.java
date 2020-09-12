@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import date_time_calculator.DateTimeCalculator;
-import date_time_calculator.DatesManager;
-import date_time_calculator.Session;
-import repository.SessionRepository;
+import com.sapient.date_time_calculator.DateTimeCalculator;
+import com.sapient.date_time_calculator.DatesManager;
+import com.sapient.date_time_calculator.Session;
+import com.sapient.repository.SessionRepository;
 
 @RestController
 @RequestMapping("/api")

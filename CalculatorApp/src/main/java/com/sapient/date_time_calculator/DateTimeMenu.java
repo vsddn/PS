@@ -1,4 +1,4 @@
-package date_time_calculator;
+package com.sapient.date_time_calculator;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;

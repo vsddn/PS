@@ -1,8 +1,8 @@
-package history_manager;
+package com.sapient.history_manager;
 
 import java.util.*;
 
-import date_time_calculator.DatesManager;
+import com.sapient.date_time_calculator.DatesManager;
 
 public class CalculatorHistory {
 	private ArrayList<History> historyList; 

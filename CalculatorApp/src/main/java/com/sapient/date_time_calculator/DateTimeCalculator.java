@@ -1,12 +1,12 @@
-package date_time_calculator;
+package com.sapient.date_time_calculator;
 import java.lang.Math;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 import org.springframework.stereotype.Component;
 
-import history_manager.CalculatorHistory;
-import history_manager.History;
+import com.sapient.history_manager.CalculatorHistory;
+import com.sapient.history_manager.History;
 
 @Component
 public class DateTimeCalculator {

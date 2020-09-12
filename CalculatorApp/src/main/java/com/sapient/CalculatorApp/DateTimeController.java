@@ -11,10 +11,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import date_time_calculator.DateTimeCalculator;
-import date_time_calculator.DatesManager;
-import date_time_calculator.Session;
-import repository.SessionRepository;
+import com.sapient.date_time_calculator.DateTimeCalculator;
+import com.sapient.date_time_calculator.DatesManager;
+import com.sapient.date_time_calculator.Session;
+import com.sapient.repository.SessionRepository;
 
 @Controller
 public class DateTimeController {
@@ -24,6 +24,7 @@ public class DateTimeController {
 	SessionRepository sessionRepository ;
 	DatesManager dates= new DatesManager();
 
+	
 	Long session_id =(long) 1;
 	
 	List<Long> allSession;

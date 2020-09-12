@@ -1,4 +1,4 @@
-package documentation;
+package com.spaient.documentation;
 
 import java.util.ArrayList;
 

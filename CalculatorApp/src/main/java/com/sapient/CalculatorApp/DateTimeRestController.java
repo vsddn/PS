@@ -19,7 +19,7 @@ import com.sapient.repository.SessionRepository;
 @RequestMapping("/api")
 public class DateTimeRestController {
 	@Autowired
-	DateTimeCalculator calc;
+	DateTimeCalculator dateTimeCalculator;
 	@Autowired
 	SessionRepository sessionRepository;
 
@@ -38,21 +38,21 @@ public class DateTimeRestController {
 	
 	@GetMapping("/addDates")
 	public String addDates(@RequestParam Date date1,@RequestParam Date date2,int choice) {
-		result = calc.addTwoDates(date1, date2,choice);
+		result = dateTimeCalculator.addTwoDates(date1, date2,choice);
 		//sessionRepository.save(new Session(session_id,date1,result.getFormattedDate()));
 		return result;
 	}
 	
 	@GetMapping("/subtractDates")
 	public String subtractDates(@RequestParam Date date1,@RequestParam Date date2,int choice,ModelMap model) {
-		result = calc.subtractTwoDates(date1,date2,choice);
+		result = dateTimeCalculator.subtractTwoDates(date1,date2,choice);
 		//sessionRepository.save(new Session(session_id,date1,result.getFormattedDate()));
 		
 		return result;
 	}
 	@GetMapping("/addNDays")
 	public String addNDays(@RequestParam Date date1, @RequestParam int choice, @RequestParam int n, ModelMap model) {
-		result = calc.addNDays(date1,choice,n);
+		result = dateTimeCalculator.addNDays(date1,choice,n);
 		//sessionRepository.save(new Session(session_id,date1,result.getFormattedDate()));
 		return result;
 	}
@@ -60,7 +60,7 @@ public class DateTimeRestController {
 	
 	@GetMapping("/subtractNDays")
 	public String subtractNDays(@RequestParam Date date1,@RequestParam int choice, @RequestParam int n, ModelMap model) {
-		result = calc.subtractNDays(date1,choice,n);
+		result = dateTimeCalculator.subtractNDays(date1,choice,n);
 		
 		//sessionRepository.save(new Session(session_id,date1,result.getFormattedDate()));
 		
@@ -69,7 +69,7 @@ public class DateTimeRestController {
 	
 	@GetMapping("/addNWeeks")
 	public String addNWeeks(@RequestParam Date date1,@RequestParam int choice, @RequestParam int n, ModelMap model) {
-		result = calc.addNWeeks(date1,choice,n);
+		result = dateTimeCalculator.addNWeeks(date1,choice,n);
 		query = "Add "+n+" Weeks to "+date1;
 		model.put("query", query);
 		model.put("result", result);
@@ -79,7 +79,7 @@ public class DateTimeRestController {
 	
 	@GetMapping("/subtractNWeeks")
 	public String subtractNWeeks(@RequestParam Date date1,@RequestParam int choice, @RequestParam int n, ModelMap model) {
-		result = calc.subtractNWeeks(date1,choice,n);
+		result = dateTimeCalculator.subtractNWeeks(date1,choice,n);
 		query = "Subtract "+n+" weeks to "+date1;
 		model.put("query", query);
 		model.put("result", result);
@@ -89,27 +89,27 @@ public class DateTimeRestController {
 	
 	@GetMapping("/addNMonths")
 	public String addNMonths(@RequestParam Date date1,@RequestParam int choice, @RequestParam int n, ModelMap model) {
-		result = calc.addNMonths(date1,choice,n);
+		result = dateTimeCalculator.addNMonths(date1,choice,n);
 		//sessionRepository.save(new Session(session_id,date1,result.getFormattedDate()));
 		return result;
 	}
 	
 	@GetMapping("/subtractNMonths")
 	public String subtractNMonths(@RequestParam Date date1,@RequestParam int choice, @RequestParam int n, ModelMap model) {
-		result = calc.subtractNMonths(date1,choice,n);
+		result = dateTimeCalculator.subtractNMonths(date1,choice,n);
 		//sessionRepository.save(new Session(session_id,date1,result.getFormattedDate()));
 		return result;
 	}
 	
 	@GetMapping("/getDay")
 	public String getDayOfTheWeek(@RequestParam Date date,@RequestParam int choice,ModelMap model) {
-		result = calc.getDayOfTheDate(date, choice);
+		result = dateTimeCalculator.getDayOfTheDate(date, choice);
 		return result;
 	}
 	
 	@GetMapping("/getWeek")
 	public String getWeek(@RequestParam Date date,@RequestParam int choice,ModelMap model) {
-		result = calc.getDayOfTheDate(date, choice);
+		result = dateTimeCalculator.getDayOfTheDate(date, choice);
 		return result;
 	}
 	

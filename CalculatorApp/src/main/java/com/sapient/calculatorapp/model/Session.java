@@ -1,4 +1,4 @@
-package com.sapient.model;
+package com.sapient.calculatorapp.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

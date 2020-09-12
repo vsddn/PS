@@ -1,4 +1,4 @@
-package com.sapient.model;
+package com.sapient.calculatorapp.model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

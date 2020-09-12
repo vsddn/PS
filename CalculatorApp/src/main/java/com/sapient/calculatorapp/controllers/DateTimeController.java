@@ -1,4 +1,4 @@
-package com.sapient.CalculatorApp;
+package com.sapient.calculatorapp.controllers;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -16,10 +16,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.sapient.model.DateTimeCalculator;
-import com.sapient.model.DatesManager;
-import com.sapient.model.Session;
-import com.sapient.repository.SessionRepository;
+import com.sapient.calculatorapp.model.DateTimeCalculator;
+import com.sapient.calculatorapp.model.DatesManager;
+import com.sapient.calculatorapp.model.Session;
+import com.sapient.calculatorapp.repository.SessionRepository;
 
 @Controller
 public class DateTimeController {

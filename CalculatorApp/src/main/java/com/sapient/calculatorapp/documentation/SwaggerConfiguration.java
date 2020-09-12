@@ -1,4 +1,4 @@
-package com.sapient.documentation;
+package com.sapient.calculatorapp.documentation;
 
 import java.util.ArrayList;
 
